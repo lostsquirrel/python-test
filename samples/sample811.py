@@ -45,6 +45,8 @@ class MITPerson(Person):
 
 	def __lt__(self, other):
 		return self.idNum < other.idNum
+	def isStudent(self):
+		return isinstance(self,Student)
 
 class Student(MITPerson):
 	pass
@@ -80,9 +82,13 @@ class Grad(Student):
 # p1 = MITPerson('Barbara Beaver')
 # print p1,p1.getIdNum()
 #########################################
+p3 = MITPerson('Billy Bob Beaver')
 p5 = Grad('Buzz Aldrin')
 p6 = UG('Billy Beaver', 1984)
-print p5
-print type(p5)
-print type(p5) == Grad
-print type(p5) == UG
+# print p5
+# print type(p5)
+# print type(p5) == Grad
+# print type(p5) == UG
+print p5.isStudent()
+print p6.isStudent()
+print p3.isStudent()
