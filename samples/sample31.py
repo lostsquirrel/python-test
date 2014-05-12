@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 #寻找能开立方的数
-x = int(raw_input("请输入一个整数： "))
+# x = int(raw_input("请输入一个整数： "))
+x= 1000
 ans = 0;
 while ans ** 3 < abs(x):
 	ans = ans + 1
