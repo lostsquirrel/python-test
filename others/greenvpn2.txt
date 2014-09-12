@@ -1,0 +1,46 @@
+iOS/Android/Mac手动配置线路
+适用系统
+线路名称
+域名
+协议
+状态
+iOS/Android/Mac
+VIP-US1
+us1.grjsq.mobi
+PPTP+L2TP
+   正常
+iOS/Android/Mac
+VIP-US2
+us2.grjsq.mobi
+PPTP+L2TP
+   正常
+iOS/Android/Mac
+VIP-UK1
+uk1.grjsq.mobi
+PPTP+L2TP
+   正常
+iOS/Android/Mac
+VIP-UK2
+uk2.grjsq.mobi
+PPTP+L2TP
+   正常
+iOS/Android/Mac
+VIP-JP
+jp.grjsq.mobi
+PPTP+L2TP
+   正常
+iOS/Android/Mac
+Free-US
+free.grjsq.mobi
+PPTP+L2TP
+   正常
+iOS/Android/Mac
+VIP-KR
+kr.grjsq.mobi
+PPTP+L2TP
+   正常
+iOS/Android/Mac
+VIP-TW
+tw.grjsq.mobi
+PPTP+L2TP
+   正常
