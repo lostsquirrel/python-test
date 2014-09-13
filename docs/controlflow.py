@@ -8,6 +8,8 @@ def demo_0():
         else:
             # loop fell through without finding a factor
             print n, 'is a prime number'
+            
+
 '''
 2 is a prime number
 3 is a prime number
@@ -27,7 +29,7 @@ def demo_1():
                 break
         print n, 'is a prime number'
     
-demo_1()
+# demo_1()
 
 '''
 2 is a prime number
@@ -43,3 +45,17 @@ demo_1()
 9 equals 3 * 3
 9 is a prime number
 '''
+
+def demo_2():
+    x = 10
+    while x > 0:
+        x = x - 1
+        if x % 2 == 0:
+            pass
+#             break
+        print 'finish in this round with x = %s' % x
+    else:
+        print x
+        
+demo_2()
+        
