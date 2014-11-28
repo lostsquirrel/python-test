@@ -5,8 +5,11 @@
 # 4。包含数字
 import re
 def checkio(data):
-    'Return True if password strong and False if not'
-    return bool(len(data) >= 10 and filter(lambda a:a.isupper(),data) and filter(lambda a:a.islower(),data) and filter(lambda a:a.isdigit(),data))
+    'Return True if password strong and False if not'
+    return bool(len(data) >= 10 
+                and filter(lambda a:a.isupper(),data) 
+                and filter(lambda a:a.islower(),data) 
+                and filter(lambda a:a.isdigit(),data))
 print 'First ','Done' if checkio('A1213pokl')==False else 'wrong'
 print 'Second ','Done' if checkio('bAse730onE4')==True else 'wrong'
 
