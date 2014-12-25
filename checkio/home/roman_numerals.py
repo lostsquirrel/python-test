@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # I 1 (unus)
 # V 5 (quinque)
 # X 10 (decem)

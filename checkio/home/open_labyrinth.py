@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #Your code here
 #You can import some modules or create additional functions
 

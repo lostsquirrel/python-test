@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 FIRST_TEN = ["zero", "one", "two", "three", "four", "five", "six", "seven",
              "eight", "nine"]
 SECOND_TEN = ["ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen",

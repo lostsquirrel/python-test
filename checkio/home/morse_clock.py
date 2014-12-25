@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 def to_mose(x, bit):
 	x = x[2:]
 	x = '0' * (bit - len(x)) + x
