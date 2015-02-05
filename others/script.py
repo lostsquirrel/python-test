@@ -11,9 +11,10 @@ class Triangle(object):
             return False
             
 class Equilateral(Triangle):
-    angle = 60
     def __init__(self):
-        super(self,angle,angle,angle)
+        angle = 60
+        super(self, angle, angle, angle)
+
 
 def test(x):
     for x in range(1,10):

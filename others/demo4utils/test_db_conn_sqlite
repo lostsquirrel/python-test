@@ -7,9 +7,9 @@ import time
 pingResultQl = "INSERT INTO ping_result(ip, ttl, time, create_time) VALUES (?, ?, ?, ?)"
 serverInsertQl = "INSERT INTO server_list(area, name, ip, protocol, status, create_time) VALUES (?, ?, ?, ?, ?, ?)"
 db = 'test.db'
-
+'''
 def printVersion2():
-    con = lite.connect('test.db')
+    con = lite.connect('test1.db')
     
     with con:
         
@@ -82,9 +82,9 @@ def getPingbyIp(ip):
         return cur.fetchall()
     
 
-
+'''
 if __name__ == "__main__":
-    pass
+#     printVersion2()
 #     qlString = "CREATE TABLE server_list(id INTEGER PRIMARY KEY AUTOINCREMENT, area TEXT, name TEXT, ip TEXT, protocol TEXT, create_time REAL, status INT)"
 #     crateTable(db, qlString)
 #     insert('220.181.111.86', 54, 39.3, time.time())    
