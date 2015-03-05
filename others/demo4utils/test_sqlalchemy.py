@@ -36,7 +36,7 @@ def find_notice(user_id, firstResult, maxResults, is_read = None):
             sql = "SELECT * FROM notice WHERE user_id = :user_id AND is_read = :is_read limit :maxResult offset :firstResult"
             params = dict(user_id = user_id, is_read = is_read, firstResult=firstResult, maxResult=maxResults)
         rp = cursor_notify.execute(sql, params)
-#         print dir(cursor_notify)
+#         print dir(cursor_notify)sessionmaker
 #         print sql
 #         print params
 #         return rp
@@ -93,7 +93,7 @@ def get_notieces(user_id, page, size):
         item = dict()
         print len(i)
         for x in range(len(i)):
-        	item[orm[feilds[x]]] = i[x]
+            item[orm[feilds[x]]] = i[x]
         rList.append(item)
     
     pages = get_pages(total, size)
