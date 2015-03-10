@@ -44,7 +44,7 @@ def count_inversion(sequence):
     for x in range(0, amount):
         for y in range(x + 1, amount):
             if (x < y and sequence[x] > sequence[y]):
-                print x, y
+#                 print x, y''
                 count += 1
     return count
 
