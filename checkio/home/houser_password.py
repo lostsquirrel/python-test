@@ -5,13 +5,13 @@
 # 4。包含数字
 import re
 def checkio(data):
-    'Return True if password strong and False if not'
+    """Return True if password strong and False if not"""
     return bool(len(data) >= 10 
                 and filter(lambda a:a.isupper(),data) 
                 and filter(lambda a:a.islower(),data) 
                 and filter(lambda a:a.isdigit(),data))
-print 'First ','Done' if checkio('A1213pokl')==False else 'wrong'
-print 'Second ','Done' if checkio('bAse730onE4')==True else 'wrong'
+print 'First ', 'Done' if checkio('A1213pokl')==False else 'wrong'
+print 'Second ', 'Done' if checkio('bAse730onE4')==True else 'wrong'
 
 # def checkio(data):
 
@@ -34,11 +34,11 @@ print 'Second ','Done' if checkio('bAse730onE4')==True else 'wrong'
 #     		break;		
 #     return has_digit and has_lower and has_upper
 
-#Some hints
-#Just check all conditions
-
-
-#These "asserts" using only for self-checking and not necessary for auto-testing
+# Some hints
+# Just check all conditions
+#
+# ##
+# These "asserts" using only for self-checking and not necessary for auto-testing
 if __name__ == '__main__':
     assert checkio(u'A1213pokl') == False, "1st example"
     assert checkio(u'bAse730onE4') == True, "2nd example"

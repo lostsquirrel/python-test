@@ -1,10 +1,11 @@
 # -*- coding: utf-8 -*-
-'''
-Created on Dec 2, 2014
 
-@author: lisong
-'''
 def flatten(dictionary):
+    """
+    Created on Dec 2, 2014
+
+    @author: lisong
+    """
     stack = [((), dictionary)]
     result = {}
     while stack:
@@ -14,16 +15,16 @@ def flatten(dictionary):
                 stack.append((path + (k,), v))
                 if len(v.keys()) == 0:
                     result["/".join((path + (k,)))] = ""
-#                 print stack
-#                 print path 
-#                 print 
+                #                 print stack
+                #                 print path
+                #                 print
             else:
                 result["/".join((path + (k,)))] = v
     return result
 
 
 if __name__ == '__main__':
-    #These "asserts" using only for self-checking and not necessary for auto-testing
+    # These "asserts" using only for self-checking and not necessary for auto-testing
     assert flatten({"key": "value"}) == {"key": "value"}, "Simple"
     assert flatten(
         {"key": {"deeper": {"more": {"enough": "value"}}}}
