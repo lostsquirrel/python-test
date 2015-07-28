@@ -22,7 +22,9 @@ the size is width_WE by width_NS and the height of the building is height.
 
 corners()
 
-Returns a dictionary with the coordinates of the building corners. The dictionary has following keys: "north-west", "north-east", "south-west", "south-east". The values are lists or tuples with two numbers.
+Returns a dictionary with the coordinates of the building corners.
+The dictionary has following keys: "north-west", "north-east", "south-west", "south-east".
+The values are lists or tuples with two numbers.
 
 >>> Building(1, 2, 2, 2).corners()
 {"north-west": [3, 2], "north-east": [3, 4], "south-west": [1, 2], "south-east": [1, 4]}
@@ -43,7 +45,8 @@ Returns the volume of the building.
 
 __repr__()
 
-This is a string representation of the Building. This method is used for "print" or "str" conversion. Returns the string in the following view:
+This is a string representation of the Building. This method is used for "print" or "str" conversion.
+ Returns the string in the following view:
 "Building({south}, {west}, {width_we}, {width_ns}, {height})"
 >>> str(Building(0, 0, 10.5, 2.546))
 "Building(0, 0, 10.5, 2.546, 10)"
@@ -54,8 +57,111 @@ Input: Statements and expression with the Building class.
 
 Output: The behaviour as described.
 
-How it is used: Here you will learn how to write a simple class with minimal functionality to achieve greater glory for Robonia.
+How it is used:
+Here you will learn how to write a simple class with minimal functionality to achieve greater glory for Robonia.
 
 Precondition: All data are correct.
 
 """
+
+
+class Building:
+    """
+    Returns a new Building instance with the South-West corner at [south, west] coordinates,
+    the size is width_WE by width_NS and the height of the building is height.
+    "height" is a positive number with a default value of 10.
+    """
+
+    def __init__(self, south, west, width_WE, width_NS, height=10):
+        self.south = south
+        self.west = west
+        self.width_WE = width_WE
+        self.width_NS = width_NS
+        self.height = height
+
+    def corners(self):
+        """
+        Returns a dictionary with the coordinates of the building corners.
+        The dictionary has following keys: "north-west", "north-east", "south-west", "south-east".
+        The values are lists or tuples with two numbers.
+        :return:
+        """
+        north = self.south + self.width_NS
+        east = self.west + self.width_WE
+        corners = {
+            'north-west': (north, self.west),
+            'north-east': (north, east),
+            'south-west': (self.south, self.west),
+            'south-east': (self.south, east)
+        }
+
+        return corners
+
+    def area(self):
+        """
+        Returns the area of the building.
+        :return:
+        """
+        return self.width_NS * self.width_WE
+
+    def volume(self):
+        """
+        Returns the volume of the building.
+        :return:
+        """
+        return self.width_WE * self.width_NS * self.height
+
+    def __repr__(self):
+        """
+        This is a string representation of the Building.
+        This method is used for "print" or "str" conversion.
+        Returns the string in the following view:
+        "Building({south}, {west}, {width_we}, {width_ns}, {height})"
+        :return:
+        """
+        return "Building(%(south)s, %(west)s, %(width_WE)s, %(width_NS)s, %(height)s)" % {
+            'south': self.south,
+            'west': self.west,
+            'width_WE': self.width_WE,
+            'width_NS': self.width_NS,
+            'height':self.height
+        }
+
+
+if __name__ == '__main__':
+    # These "asserts" using only for self-checking and not necessary for auto-testing
+    def json_dict(d):
+        return dict((k, list(v)) for k, v in d.items())
+
+    b = Building(1, 2, 2, 3)
+    b2 = Building(1, 2, 2, 3, 5)
+    assert json_dict(b.corners()) == {'north-east': [4, 4], 'south-east': [1, 4],
+                                      'south-west': [1, 2], 'north-west': [4, 2]}, "Corners"
+    assert b.area() == 6, "Area"
+    assert b.volume() == 60, "Volume"
+    assert b2.volume() == 30, "Volume2"
+    assert str(b) == "Building(1, 2, 2, 3, 10)", "String"
+
+'''
+from itertools import product
+​
+class Building(object): # W to E: width, N to S: depth
+    def __init__(self, south, west, width, depth, height=10):
+        self.south, self.west = south, west
+        self.width, self.depth, self.height = width, depth, height
+        self.north, self.east = south + depth, west + width
+​
+    def corners(self):
+        pairs = product(('south', 'north'), ('west', 'east'))
+        return {'-'.join(p): [getattr(self, d) for d in p] for p in pairs}
+​
+    def area(self):
+        return self.width * self.depth
+​
+    def volume(self):
+        return self.width * self.depth * self.height
+​
+    def __repr__(self):
+        txt = 'Building({0.south}, {0.west}, {0.width}, {0.depth}, {0.height})'
+        return txt.format(self)
+        '''
