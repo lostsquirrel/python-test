@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 __author__ = 'lisong'
 """
 Sophia's drones are not soulless and stupid drones; they can make and have friends.
@@ -42,10 +44,16 @@ if "name1-name2" in network, then "name2-name1" not in network
 3 ≤ len(drone_name) ≤ 6
 first_name and second_name in network.
 """
+from elementary.friends import Friends
 
 def check_connection(network, first, second):
-    return True or False
-
+    networkx = list()
+    for x in network:
+        item = x.split('-')
+        networkx.append(set(item))
+    friends = Friends(networkx)
+    firstx = friends
+    return {first, second} in networkx
 
 if __name__ == '__main__':
     # These "asserts" using only for self-checking and not necessary for auto-testing
