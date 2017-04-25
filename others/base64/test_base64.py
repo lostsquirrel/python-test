@@ -16,15 +16,16 @@ import base64
 # print myfile
 # myfile = open(link).read()
 # print base64.b64encode(myfile)
-fl = open("cv2.txt")
+txt_file_name = "github_flow_bg.svg.txt"
+fl = open(txt_file_name)
 content = ""
 for x in fl:
     content += x
 
 xx = base64.b64decode(content)
-fx = open('w.jpg', 'w')
+fx = open(txt_file_name[:-4], 'w')
 fx.write(xx)
 fl.close()
 fx.close()
-print xx
+# print xx
 print 'finished...........'
