@@ -4,7 +4,7 @@ extends of unittest
 """
 import unittest
 import random
-from docs.unittest.toy_math import divide, multiply
+from docs.test.toy_math import divide, multiply
 
 
 class BaseTestCase(unittest.TestCase):

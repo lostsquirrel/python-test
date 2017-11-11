@@ -5,7 +5,7 @@ name test method other than runTest of unittest
 
 
 import unittest
-from docs.unittest.toy_math import minus
+from docs.test.toy_math import minus
 
 class MinusTestCase(unittest.TestCase):
 
