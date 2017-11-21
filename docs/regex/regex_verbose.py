@@ -20,9 +20,9 @@ class Rome:
         $ # end of string
         '''
 
-    def isRome(self, source):
+    def is_rome(self, source):
         return re.search(self.pattern, source, re.VERBOSE) is not None
 
 if __name__ == '__main__':
     ro = Rome()
-    print ro.isRome('MCMLXXXIX')
+    print ro.is_rome('MCMLXXXIX')
