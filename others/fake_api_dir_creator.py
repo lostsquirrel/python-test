@@ -2,7 +2,7 @@ import json
 import os
 
 data = json.load(open('C:/Users/lisong/Documents/_sunrise-wuhu.postman_collection.json'));
-
+# TODO request add content into files
 root_path = 'data'
 for model in data['item']:
     model_name = model['name']
