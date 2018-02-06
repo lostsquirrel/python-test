@@ -12,7 +12,7 @@ log = logging.getLogger(__name__)
 aliyun_registry_url = 'registry.cn-hangzhou.aliyuncs.com'
 aliyun_registry_namespace = '/lisong'
 local_registry_url = 'registry.lisong.pub:5000'
-local_registry_namespace = '/'
+local_registry_namespace = ''
 
 
 def transfer_single(action, image):
@@ -44,6 +44,7 @@ def transfer2local(image):
     aliyun_image = pull_from_aliyun(image)
     local_image = parse_image_name_to_local(image)
     tag_image(aliyun_image, local_image)
+    push_image(local_image)
 
 
 def pull_from_aliyun(image):
