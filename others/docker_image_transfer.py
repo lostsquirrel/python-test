@@ -41,9 +41,13 @@ def transfer2origin(image):
 
 
 def transfer2local(image):
-    aliyun_image = pull_from_aliyun(image)
+    remote_image = image
+    if image.startswith(aliyun_registry_url):
+        remote_image = pull_from_aliyun(image)
+    else:
+        pull_image(image)
     local_image = parse_image_name_to_local(image)
-    tag_image(aliyun_image, local_image)
+    tag_image(remote_image, local_image)
     push_image(local_image)
 
 
@@ -84,7 +88,9 @@ def parse_image_name_to_local(image):
 
 
 def transfer_image_name(source_image, target_registry_url, target_registry_namespace):
-    tagged_image_name = source_image.strip('\n')[source_image.rfind("/") + 1:]
+    tagged_image_name = source_image
+    if source_image.rfind("/") > 0:
+        tagged_image_name = source_image.strip('\n')[source_image.rfind("/") + 1:]
     return '%s%s/%s' % (target_registry_url, target_registry_namespace, tagged_image_name)
 
 
