@@ -22,7 +22,7 @@ class DockerImageTransfer:
         self.aliyun_registry_namespace = aliyun_registry_namespace
         self.image = image
         self.direct = False
-        self.parse_image(image)
+        self.parse_image()
 
     def transfer2aliyun(self):
         """
