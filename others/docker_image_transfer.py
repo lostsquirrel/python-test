@@ -124,15 +124,15 @@ if __name__ == '__main__':
     registry_namespace = "/lisong"
     isDirect = False
     if action < 10:
-        if len(args) == 3:
+        if len(args) > 3:
             registry_namespace = args[3]
-        if len(args) == 4:
+        if len(args) > 4:
             isDirect = True
         DockerImageTransfer(args[2].strip('\n'), registry_namespace, isDirect).transfer_single(action)
     else:
-        if len(args) == 2:
+        if len(args) > 2:
             registry_namespace = args[2]
-        if len(args) == 3:
+        if len(args) > 3:
             isDirect = True
         transfer_multiply(action, registry_namespace, isDirect)
 
