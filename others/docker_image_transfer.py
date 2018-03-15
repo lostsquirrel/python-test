@@ -1,3 +1,4 @@
+#/usr/bin/python
 # -*- coding:utf-8 -*-
 """
 get images in vps and transfer to aliyun registry
