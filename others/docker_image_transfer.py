@@ -24,6 +24,7 @@ class DockerImageTransfer:
             aliyun_registry_namespace = "/%s" % aliyun_registry_namespace
         self.aliyun_registry_namespace = aliyun_registry_namespace
         self.image = image
+        print("download direct")
         self.direct = direct
         self.parse_image()
 
