@@ -19,6 +19,8 @@ class DockerImageTransfer:
         self.tagged_image_name = None
         self.registry_url = None
         self.registry_namespace = ''
+        if not aliyun_registry_namespace.startswith("/"):
+            aliyun_registry_namespace = "/%s" % aliyun_registry_namespace
         self.aliyun_registry_namespace = aliyun_registry_namespace
         self.image = image
         self.direct = False
@@ -64,7 +66,7 @@ class DockerImageTransfer:
             name_space_start = self.image.find("/")
             name_space_end = self.image.rfind("/")
             self.tagged_image_name = self.image.strip('\n')[name_space_end + 1:]
-            self.registry_namespace = self.image[name_space_start + 1:name_space_end]
+            self.registry_namespace = self.image[name_space_start:name_space_end]
             self.registry_url = self.image[:name_space_start]
 
         elif c > 0:
