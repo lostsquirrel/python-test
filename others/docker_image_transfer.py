@@ -54,7 +54,7 @@ class DockerImageTransfer:
         push_image(local_image)
 
     def get_aliyun_image(self):
-        return '%s%s%s/%s' % (aliyun_registry_url, self.aliyun_registry_namespace, self.registry_namespace, self.tagged_image_name)
+        return '%s%s/%s' % (aliyun_registry_url, self.aliyun_registry_namespace, self.tagged_image_name)
 
     def get_local_image(self):
         return '%s%s/%s' % (local_registry_url, self.registry_namespace, self.tagged_image_name)
