@@ -24,7 +24,7 @@ class DockerImageTransfer:
             aliyun_registry_namespace = "/%s" % aliyun_registry_namespace
         self.aliyun_registry_namespace = aliyun_registry_namespace
         self.image = image
-        self.direct = False
+        self.direct = direct
         self.parse_image()
 
     def transfer2aliyun(self):
@@ -94,8 +94,8 @@ def transfer_multiply(action, registry_namespace, isDirect):
     x = 0
 
     for image in fh:
-        w = DockerImageTransfer(image.strip('\n'), registry_namespace)
-        w.transfer_single(action, isDirect)
+        w = DockerImageTransfer(image.strip('\n'), registry_namespace, isDirect)
+        w.transfer_single(action)
         x += 1
     log.info("%d images transfer" % x)
 
