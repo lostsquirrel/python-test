@@ -11,20 +11,18 @@ log = logging.getLogger(__name__)
 
 
 aliyun_registry_url = 'registry.cn-hangzhou.aliyuncs.com'
+aliyun_registry_namespace = '/lisong'
 local_registry_url = 'registry.lisong.pub:5000'
 
 
 class DockerImageTransfer:
 
-    def __init__(self, image, aliyun_registry_namespace, direct):
+    def __init__(self, image, direct):
         self.tagged_image_name = None
         self.registry_url = None
         self.registry_namespace = ''
-        if not aliyun_registry_namespace.startswith("/"):
-            aliyun_registry_namespace = "/%s" % aliyun_registry_namespace
-        self.aliyun_registry_namespace = aliyun_registry_namespace
         self.image = image
-        print("download direct: %s" % direct )
+        print("download direct: %s" % direct)
         self.direct = direct
         self.parse_image()
 
@@ -56,7 +54,7 @@ class DockerImageTransfer:
         push_image(local_image)
 
     def get_aliyun_image(self):
-        return '%s%s/%s%s' % (aliyun_registry_url, self.aliyun_registry_namespace, self.tagged_image_name, self.registry_namespace.replace("/", "-"))
+        return '%s%s/%s%s' % (aliyun_registry_url, aliyun_registry_namespace, self.tagged_image_name, self.registry_namespace.replace("/", "-"))
 
     def get_local_image(self):
         return '%s%s/%s' % (local_registry_url, self.registry_namespace, self.tagged_image_name)
@@ -95,7 +93,7 @@ def transfer_multiply(action, registry_namespace, isDirect):
     x = 0
 
     for image in fh:
-        w = DockerImageTransfer(image.strip('\n'), registry_namespace, isDirect)
+        w = DockerImageTransfer(image.strip('\n'), isDirect)
         w.transfer_single(action)
         x += 1
     log.info("%d images transfer" % x)
@@ -123,7 +121,8 @@ if __name__ == '__main__':
     # 2 single image pass by arg pull from aliyun and tag to local
     # 10 multiply images pass by images.txt tag and push to aliyun
     # 11 multiply images pass by images.txt  pull from aliyun and tag to origin
-    # 12 multiply images pass by images.txt  pull from aliyun and tag to local
+    # 12 isdirect multiply images pass by images.txt  pull from aliyun and tag to local
+    #
     action = int(args[1])
     registry_namespace = "/lisong"
     isDirect = False
@@ -132,7 +131,7 @@ if __name__ == '__main__':
             registry_namespace = args[3]
         if len(args) > 4:
             isDirect = True
-        DockerImageTransfer(args[2].strip('\n'), registry_namespace, isDirect).transfer_single(action)
+        DockerImageTransfer(args[2].strip('\n'), isDirect).transfer_single(action)
     else:
         if len(args) > 2:
             registry_namespace = args[2]
