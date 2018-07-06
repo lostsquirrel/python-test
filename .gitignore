@@ -5,3 +5,4 @@
 *.data
 /.idea/
 /venv/
+others/ali_access_key.conf

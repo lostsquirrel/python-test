@@ -15,7 +15,7 @@ import base64
 # myfile = f.read()
 # print myfile
 # myfile = open(link).read()
-# print base64.b64encode(myfile)
+# print base64_test.b64encode(myfile)
 txt_file_name = "github_flow_bg.svg.txt"
 fl = open(txt_file_name)
 content = ""
