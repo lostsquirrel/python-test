@@ -1,4 +1,4 @@
-#/usr/bin/python
+# /usr/bin/python
 # -*- coding:utf-8 -*-
 """
 get images in vps and transfer to aliyun registry
@@ -8,7 +8,6 @@ import sys
 import logging
 
 log = logging.getLogger(__name__)
-
 
 aliyun_registry_url = 'registry.cn-hangzhou.aliyuncs.com'
 aliyun_registry_namespace = '/lisong'
@@ -54,7 +53,8 @@ class DockerImageTransfer:
         push_image(local_image)
 
     def get_aliyun_image(self):
-        return '%s%s/%s%s' % (aliyun_registry_url, aliyun_registry_namespace, self.tagged_image_name, self.registry_namespace.replace("/", "-"))
+        return '%s%s/%s%s' % (aliyun_registry_url, aliyun_registry_namespace, self.tagged_image_name,
+                              self.registry_namespace.replace("/", "-"))
 
     def get_local_image(self):
         return '%s%s/%s' % (local_registry_url, self.registry_namespace, self.tagged_image_name)
@@ -86,7 +86,7 @@ class DockerImageTransfer:
         transfer_actions[act]()
 
 
-def transfer_multiply(action, registry_namespace, isDirect):
+def transfer_multiply(action, isDirect):
     fh = open('images.txt')
     action %= 10
     log.info("action %s ", action)
@@ -126,17 +126,27 @@ if __name__ == '__main__':
     action = int(args[1])
     registry_namespace = "/lisong"
     isDirect = False
+    if len(args) == 1:
+        help_message = '''
+        1. single image process
+        python docker_image_transfer.py <action> <image> <isDirect>
+        action:
+            0 single image pass by arg tag and push to aliyun
+            1 single image pass by arg pull from aliyun and tag to origin
+            2 single image pass by arg pull from aliyun and tag to local
+        2. multiply images process
+        python docker_image_transfer.py <action> <isDirect>
+        action: 
+            10 multiply images pass by images.txt tag and push to aliyun
+            11 multiply images pass by images.txt  pull from aliyun and tag to origin
+            12 isdirect multiply images pass by images.txt  pull from aliyun and tag to local
+        '''
+        sys.exit(0)
     if action < 10:
         if len(args) > 3:
-            registry_namespace = args[3]
-        if len(args) > 4:
             isDirect = True
         DockerImageTransfer(args[2].strip('\n'), isDirect).transfer_single(action)
     else:
         if len(args) > 2:
-            registry_namespace = args[2]
-        if len(args) > 3:
             isDirect = True
-        transfer_multiply(action, registry_namespace, isDirect)
-
-
+        transfer_multiply(action, isDirect)
