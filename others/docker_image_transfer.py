@@ -123,9 +123,7 @@ if __name__ == '__main__':
     # 11 multiply images pass by images.txt  pull from aliyun and tag to origin
     # 12 isdirect multiply images pass by images.txt  pull from aliyun and tag to local
     #
-    action = int(args[1])
-    registry_namespace = "/lisong"
-    isDirect = False
+
     if len(args) == 1:
         help_message = '''
         1. single image process
@@ -141,7 +139,11 @@ if __name__ == '__main__':
             11 multiply images pass by images.txt  pull from aliyun and tag to origin
             12 isdirect multiply images pass by images.txt  pull from aliyun and tag to local
         '''
+        print(help_message)
         sys.exit(0)
+    action = int(args[1])
+    registry_namespace = "/lisong"
+    isDirect = False
     if action < 10:
         if len(args) > 3:
             isDirect = True
